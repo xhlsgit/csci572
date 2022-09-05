@@ -42,11 +42,18 @@ if __name__ == '__main__':
         ask_results = json.load(f)
     with open(google_results_path) as f:
         google_results = json.load(f)
+
+    for key in ask_results:
+        value = ask_results[key]
+        for i in range(len(value)):
+            value[i] = value[i].replace('https://', '')
+            value[i] = value[i].replace('http://', '')
     for key in google_results:
         value = google_results[key]
         for i in range(len(value)):
             value[i] = value[i].replace('https://', '')
             value[i] = value[i].replace('http://', '')
+
     str_trans(search_strings)
 
     queries = []
